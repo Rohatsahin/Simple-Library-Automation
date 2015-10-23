@@ -3,8 +3,6 @@ package com.app.service;
 
 import com.app.domain.Book;
 import com.app.mongoDao.MongoBookDao;
-
-import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -44,7 +42,7 @@ public class BookService {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/delete/{bookmame}")
-    public Map<String, String> deleteBook(@PathVariable("bookmame") String bookmame) throws UnknownHostException {
+    public Map<String, String> deleteBook(@PathVariable("bookmame") String bookmame){
         String status =mongobook.deleteBook(bookmame);
         Map<String, String> response = new HashMap<String, String>();
         response.put("message", status);
@@ -53,7 +51,7 @@ public class BookService {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/update/{updatedbook}")
-    public Map<String, String> updateBook(@PathVariable("updatedbook") String updatedbook, @RequestBody Map<String, Object> bookMap) throws UnknownHostException {
+    public Map<String, String> updateBook(@PathVariable("updatedbook") String updatedbook, @RequestBody Map<String, Object> bookMap) {
     	Book book =new Book(bookMap.get("bookname").toString(),bookMap.get("author").toString());
     	String status =mongobook.updateBook(book,updatedbook);
         Map<String, String> response = new LinkedHashMap<String, String>();
