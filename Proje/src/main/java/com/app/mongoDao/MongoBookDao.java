@@ -15,11 +15,13 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author rohat
  */
+ @Service
 public class MongoBookDao implements BookDao {
 
 	@Override
